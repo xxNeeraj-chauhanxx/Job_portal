@@ -32,44 +32,65 @@ const Navbar = () => {
         <div className='bg-white'>
             <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
                 <div>
-                    <h1 className='text-2xl font-bold'>Job<span className='text-[#F83002]'>Portal</span></h1>
+                    <h1 className='text-2xl font-bold'>
+                        <span className='bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text'>
+                            Job
+                        </span>
+                        <span className='text-[#F83002]'>Portal</span>
+                    </h1>
                 </div>
+
                 <div className='flex items-center gap-12'>
                     <ul className='flex font-medium items-center gap-5'>
                         {
                             user && user.role === 'recruiter' ? (
                                 <>
-                                    <li><Link to="/admin/companies">Companies</Link></li>
-                                    <li><Link to="/admin/jobs">Jobs</Link></li>
+                                    <li><Link to="/admin/companies" className="hover:shadow-lg hover:scale-105  transition-transform duration-300 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">Companies</Link></li>
+                                    <li><Link to="/admin/jobs" className="hover:shadow-lg hover:scale-105  transition-transform duration-300 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">Jobs</Link></li>
                                 </>
                             ) : (
                                 <>
-                                    <li><Link to="/">Home</Link></li>
-                                    <li><Link to="/jobs">Jobs</Link></li>
-                                    <li><Link to="/browse">Browse</Link></li>
+                                    <li>
+  <Link to="/" className="hover:shadow-lg hover:scale-105  transition-transform duration-300 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">
+    Home
+  </Link>
+</li>
+<li>
+  <Link to="/jobs" className="hover:shadow-lg hover:scale-105  transition-transform duration-300 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">
+    Jobs
+  </Link>
+</li>
+<li>
+  <Link to="/browse" className="hover:shadow-lg hover:scale-105  transition-transform duration-300 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">
+    Browse
+  </Link>
+</li>
+
                                 </>
                             )
                         }
-
-
                     </ul>
                     {
                         !user ? (
                             <div className='flex items-center gap-2'>
-                                <Link to="/login"><Button variant="outline">Login</Button></Link>
-                                <Link to="/signup"><Button className="bg-[#6A38C2] hover:bg-[#5b30a6]">Signup</Button></Link>
+                                <Link to="/login">
+                                    <Button variant="outline" className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text hover:shadow-lg hover:scale-105  transition-transform duration-300">Login</Button>
+                                </Link>
+                                <Link to="/signup">
+                                <Button variant="outline" className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text hover:shadow-lg hover:scale-105  transition-transform duration-300">Sign Up</Button>
+                                </Link>
                             </div>
                         ) : (
                             <Popover>
                                 <PopoverTrigger asChild>
-                                    <Avatar className="cursor-pointer">
+                                    <Avatar className="cursor-pointer hover:shadow-lg hover:scale-205  transition-transform duration-300">
                                         <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
                                     </Avatar>
                                 </PopoverTrigger>
                                 <PopoverContent className="w-80">
                                     <div className=''>
                                         <div className='flex gap-2 space-y-2'>
-                                            <Avatar className="cursor-pointer">
+                                            <Avatar className="cursor-pointer hover:shadow-lg hover:scale-105  transition-transform duration-300">
                                                 <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
                                             </Avatar>
                                             <div>
@@ -80,14 +101,14 @@ const Navbar = () => {
                                         <div className='flex flex-col my-2 text-gray-600'>
                                             {
                                                 user && user.role === 'student' && (
-                                                    <div className='flex w-fit items-center gap-2 cursor-pointer'>
+                                                    <div className='flex w-fit items-center gap-2 cursor-pointer hover:shadow-lg hover:scale-105  transition-transform duration-300'>
                                                         <User2 />
                                                         <Button variant="link"> <Link to="/profile">View Profile</Link></Button>
                                                     </div>
                                                 )
                                             }
 
-                                            <div className='flex w-fit items-center gap-2 cursor-pointer'>
+                                            <div className='flex w-fit items-center gap-2 cursor-pointer hover:shadow-lg hover:scale-105  transition-transform duration-300'>
                                                 <LogOut />
                                                 <Button onClick={logoutHandler} variant="link">Logout</Button>
                                             </div>
@@ -97,12 +118,10 @@ const Navbar = () => {
                             </Popover>
                         )
                     }
-
                 </div>
             </div>
-
         </div>
     )
 }
 
-export default Navbar
+export default Navbar;
